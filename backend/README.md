@@ -34,7 +34,7 @@ FastAPI backend for the Research Assistant. Deploy to Render.com.
 4. Configure:
    - **Name:** research-assistant-api (or your choice)
    - **Environment:** Python 3
-   - **Build Command:** `pip install -r requirements.txt`
+   - **Build Command:** `pip install --upgrade pip && pip install -r requirements.txt`
    - **Start Command:** `python -m uvicorn main:app --host 0.0.0.0 --port $PORT` ⚠️ **IMPORTANT: Use `python -m uvicorn` not just `uvicorn`**
 5. Add environment variables in the Render dashboard
 6. Click "Create Web Service"
@@ -46,9 +46,19 @@ If you already created the service, you need to update the start command:
 1. Go to your Render dashboard
 2. Click on your web service
 3. Go to "Settings" → "Build & Deploy"
-4. Update **Start Command** to: `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
-5. Click "Save Changes"
-6. Manually trigger a new deployment
+4. Update **Build Command** to: `pip install --upgrade pip && pip install -r requirements.txt`
+5. Update **Start Command** to: `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
+6. Click "Save Changes"
+7. Manually trigger a new deployment
+
+### Troubleshooting
+
+**Problem:** `No module named uvicorn`
+- **Solution:** Update your Build Command to: `pip install --upgrade pip && pip install -r requirements.txt`
+- Make sure `uvicorn[standard]>=0.24.0` is in your `requirements.txt`
+
+**Problem:** `uvicorn: command not found`
+- **Solution:** Use `python -m uvicorn` instead of just `uvicorn` in the Start Command
 
 ## Test Locally
 
