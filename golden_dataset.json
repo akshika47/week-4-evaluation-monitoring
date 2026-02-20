@@ -1,0 +1,76 @@
+{
+  "name": "research-assistant-golden-v1",
+  "description": "Golden dataset for Company Research Assistant evaluation",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "test_001",
+      "query": "What are the key benefits of RAG?",
+      "expected_topics": ["grounding", "reduced hallucination", "up-to-date info"],
+      "expected_not": ["training required", "fine-tuning"],
+      "min_score": 0.8,
+      "category": "basic"
+    },
+    {
+      "id": "test_002",
+      "query": "Tell me about OpenAI",
+      "expected_topics": ["AI research", "GPT models", "company"],
+      "expected_not": [],
+      "min_score": 0.75,
+      "category": "basic"
+    },
+    {
+      "id": "test_003",
+      "query": "What is LangGraph?",
+      "expected_topics": ["agent framework", "state management", "workflows"],
+      "expected_not": ["fine-tuning", "training"],
+      "min_score": 0.8,
+      "category": "basic"
+    },
+    {
+      "id": "test_004",
+      "query": "",
+      "expected_topics": [],
+      "expected_not": [],
+      "min_score": 0.0,
+      "category": "edge_case",
+      "should_handle_gracefully": true
+    },
+    {
+      "id": "test_005",
+      "query": "asdfghjkl qwertyuiop",
+      "expected_topics": [],
+      "expected_not": [],
+      "min_score": 0.3,
+      "category": "edge_case",
+      "note": "Nonsensical query - should return helpful error or clarification"
+    },
+    {
+      "id": "test_006",
+      "query": "Compare OpenAI and Anthropic",
+      "expected_topics": ["comparison", "both companies", "differences"],
+      "expected_not": [],
+      "min_score": 0.75,
+      "category": "complex"
+    },
+    {
+      "id": "test_007",
+      "query": "What are the latest developments in AI agents?",
+      "expected_topics": ["recent", "agents", "developments"],
+      "expected_not": [],
+      "min_score": 0.7,
+      "category": "complex",
+      "note": "Should include recent information"
+    },
+    {
+      "id": "test_008",
+      "query": "Explain multi-agent systems in simple terms",
+      "expected_topics": ["simple explanation", "multi-agent", "coordination"],
+      "expected_not": ["complex jargon"],
+      "min_score": 0.8,
+      "category": "basic",
+      "note": "Should be accessible to beginners"
+    }
+  ]
+}
+
