@@ -25,7 +25,7 @@ FastAPI backend for the Research Assistant. Deploy to Render.com.
    - **Name:** research-assistant-api (or your choice)
    - **Environment:** Python 3
    - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - **Start Command:** `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
 5. Add environment variables in the Render dashboard
 6. Click "Create Web Service"
 7. Wait for deployment (2-3 minutes)

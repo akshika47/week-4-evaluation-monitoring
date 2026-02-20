@@ -51,7 +51,7 @@ git push -u origin main
    - **Name:** `research-assistant-api` (or your choice)
    - **Environment:** `Python 3`
    - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - **Start Command:** `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
 6. Click "Advanced" → "Add Environment Variable"
    - Add all your API keys:
      - `OPENAI_API_KEY`
