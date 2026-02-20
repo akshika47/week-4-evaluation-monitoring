@@ -13,10 +13,22 @@ Setup:
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from langfuse.decorators import observe
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 import os
+
+# Make Langfuse optional for local testing (Python 3.14 compatibility issue)
+LANGFUSE_AVAILABLE = False
+try:
+    import langfuse
+    from langfuse.decorators import observe
+    LANGFUSE_AVAILABLE = True
+except (ImportError, Exception) as e:
+    # Create a no-op decorator if Langfuse is not available
+    def observe(func=None, **kwargs):
+        if func is None:
+            return lambda f: f
+        return func
 
 app = FastAPI()
 
@@ -39,7 +51,7 @@ class Query(BaseModel):
 
 @observe()
 def research_assistant(query: str) -> str:
-    """Research assistant - automatically traced by Langfuse."""
+    """Research assistant - automatically traced by Langfuse (if available)."""
     if not llm:
         return "[Mock] Research summary about the query. This is a placeholder response."
     
