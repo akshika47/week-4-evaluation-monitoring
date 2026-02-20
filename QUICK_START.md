@@ -14,7 +14,7 @@
    - Go to render.com → New Web Service
    - Connect repo
    - Build: `pip install -r requirements.txt`
-   - Start: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - Start: `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
    - Add env vars (API keys)
    - Deploy → get URL: `https://your-app.onrender.com`
 
